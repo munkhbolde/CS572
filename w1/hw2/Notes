@@ -1,0 +1,3 @@
+# Because setImmediate do not use timer so sometimes we need to use setImmediate instead of setTimeOut
+# Process.nextTick uses different queue  setImmediate uses checker queue in event loop
+# http, https, v8, crypto, os, zlib, url, tty, request, timers, stream
