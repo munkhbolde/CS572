@@ -66,19 +66,19 @@ app.put('/api/grades/:id', (req, res) => {
   if (data === undefined)
     res.json(new Result([], false))
 
-  if (req.query.id)
-    data.id = req.query.id
+  if (req.body.id)
+    data.id = req.body.id
 
-  if (req.query.name)
-    data.name = req.query.name
+  if (req.body.name)
+    data.name = req.body.name
 
-  if (req.query.course)
-    data.course = req.query.course
+  if (req.body.course)
+    data.course = req.body.course
 
-  if (req.query.grade)
-    data.grade = req.query.grade
+  if (req.body.grade)
+    data.grade = req.body.grade
 
-  res.redirect('/api/grades/' + req.params.id)
+  res.redirect('/api/grades/')
 })
 
 //:1 Delete
