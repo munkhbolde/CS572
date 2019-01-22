@@ -1,0 +1,9 @@
+[{
+  "author": ["Asaad Saad", "Michael Zijlstra"],
+  "tags": ["Node", "Javascript", "MongoDB"],
+  "ISBN": 1234567890,
+  "borrow": [
+    { "name": "Munkhbol Enkhtur", "due_date": "2019-02-04"},
+    { "name": "Someone Someone", "due_date":  "2019-02-08"}
+  ]
+}]
