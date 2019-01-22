@@ -16,8 +16,12 @@ client.connect(err => {
 
 
 //:1 Secret
+app.get('/', (req, res) => {
+  res.redirect('/secret')
+})
+
 app.get('/secret', (req, res) => {
-  res.header('Content-Type', 'text/html; charset=utf-8')
+  res.header('Content-Type', 'application/json; charset=utf-8')
   const db = client.db('secret')
   const collection = db.collection('reveal')
 
@@ -25,7 +29,7 @@ app.get('/secret', (req, res) => {
     let decipher = crypto.createDecipher(algorithm, key);
     let decrypted = decipher.update(doc.message, 'hex', 'utf-8');
     decrypted += decipher.final('utf-8')
-    res.end(decrypted)
+    res.json([{data: decrypted, success: true}])
   })
 
 })
