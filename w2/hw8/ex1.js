@@ -14,6 +14,7 @@ app.use((req, res, next) => {
   res.header('Content-Type', 'application/json')
   next()
 })
+app.get('/', (req, res) => { res.redirect('/result/1') })
 
 //:1 /result/1
 app.get('/result/1', async (req, res) => {
@@ -41,8 +42,7 @@ app.get('/result/3', async (req, res) => {
   datas = []
   fields = {_id: 0, field_id: 0, restraunt_id: 1, name: 1, district: 1, cuisine:1}
   const result = await req.db.collection('restraunt')
-  .find({}, fields)
-  .forEach((data) => {
+  .find({}, fields).forEach((data) => {
     datas.push(data)
   })
   res.json(datas)
@@ -53,8 +53,7 @@ app.get('/result/4', async (req, res) => {
   datas = []
   fields = {_id: 0, field_id: 0, restraunt_id: 1, name: 1, district: 1, zipcode:1}
   const result = await req.db.collection('restraunt')
-  .find({}, fields)
-  .forEach((data) => {
+  .find({}, fields).forEach((data) => {
     datas.push(data)
   })
   res.json(datas)
@@ -64,8 +63,7 @@ app.get('/result/4', async (req, res) => {
 app.get('/result/5', async (req, res) => {
   datas = []
   const result = await req.db.collection('restraunt')
-  .find({district: 'Bronx'})
-  .forEach((data) => {
+  .find({district: 'Bronx'}).forEach((data) => {
     datas.push(data)
   })
   res.json(datas)
@@ -74,8 +72,7 @@ app.get('/result/5', async (req, res) => {
 app.get('/result/6', async (req, res) => {
   datas = []
   const result = await req.db.collection('restraunt')
-  .find({district: 'Bronx'}).limit(5)
-  .forEach((data) => {
+  .find({district: 'Bronx'}).limit(5).forEach((data) => {
     datas.push(data)
   })
   res.json(datas)
@@ -85,8 +82,7 @@ app.get('/result/6', async (req, res) => {
 app.get('/result/7', async (req, res) => {
   datas = []
   const result = await req.db.collection('restraunt')
-  .find({district: 'Bronx'}).skip(5).limit(5)
-  .forEach((data) => {
+  .find({district: 'Bronx'}).skip(5).limit(5).forEach((data) => {
     datas.push(data)
   })
   res.json(datas)
@@ -135,8 +131,7 @@ app.get('/result/11', async (req, res) => {
   datas = []
   fields = {'restraunt_id': 1, 'name': 1, 'district':1, 'cuisine': 1}
   const result = await req.db.collection('restraunt')
-  .find({'name': {'$regex': 'ces$'}}, fields)
-  .forEach((data) => {
+  .find({'name': {'$regex': 'ces$'}}, fields).forEach((data) => {
     datas.push(data)
   })
   res.json(datas)
@@ -147,8 +142,7 @@ app.get('/result/12', async (req, res) => {
   datas = []
   fields = {'restraunt_id': 1, 'name': 1, 'district':1, 'cuisine': 1}
   const result = await req.db.collection('restraunt')
-  .find({'name': {'$regex': '.*Reg'}}, fields)
-  .forEach((data) => {
+  .find({'name': {'$regex': '.*Reg'}}, fields).forEach((data) => {
     datas.push(data)
   })
   res.json(datas)
@@ -161,8 +155,7 @@ app.get('/result/13', async (req, res) => {
   .find({'$and': [
     {'district': 'Bronx'},
     {'$or': [{'cuisine': 'American '}, {'cuisine': 'Chinese'}]}
-  ]})
-  .forEach((data) => {
+  ]}).forEach((data) => {
     datas.push(data)
   })
   res.json(datas)
@@ -197,8 +190,7 @@ app.get('/result/16', async (req, res) => {
   datas = []
   fields = {'restraunt_id': 1, 'name': 1, 'district':1, 'cuisine': 1}
   const result = await req.db.collection('restraunt')
-  .find({'grades.score': {'$lte': 10}}, fields)
-  .forEach((data) => {
+  .find({'grades.score': {'$lte': 10}}, fields).forEach((data) => {
     datas.push(data)
   })
   res.json(datas)
@@ -220,8 +212,7 @@ app.get('/result/17', async (req, res) => {
 app.get('/result/18', async (req, res) => {
   datas = []
   const result = await req.db.collection('restraunt')
-  .find({}, {'sort': {'name': 1}})
-  .forEach((data) => {
+  .find({}, {'sort': {'name': 1}}).forEach((data) => {
     datas.push(data)
   })
   res.json(datas)
@@ -231,8 +222,7 @@ app.get('/result/18', async (req, res) => {
 app.get('/result/19', async (req, res) => {
   datas = []
   const result = await req.db.collection('restraunt')
-  .find({}, {'sort': {'name': -1}})
-  .forEach((data) => {
+  .find({}, {'sort': {'name': -1}}).forEach((data) => {
     datas.push(data)
   })
   res.json(datas)
@@ -242,8 +232,7 @@ app.get('/result/19', async (req, res) => {
 app.get('/result/20', async (req, res) => {
   datas = []
   const result = await req.db.collection('restraunt')
-  .find({}, {'sort': {'cuisine': 1, 'district': -1}})
-  .forEach((data) => {
+  .find({}, {'sort': {'cuisine': 1, 'district': -1}}).forEach((data) => {
     datas.push(data)
   })
   res.json(datas)
@@ -253,8 +242,7 @@ app.get('/result/20', async (req, res) => {
 app.get('/result/21', async (req, res) => {
   datas = []
   const result = await req.db.collection('restraunt')
-  .find({'address.steet': {'$exists': 'false'}})
-  .forEach((data) => {
+  .find({'address.steet': {'$exists': 'false'}}).forEach((data) => {
     datas.push(data)
   })
   res.json(datas)
@@ -264,8 +252,7 @@ app.get('/result/21', async (req, res) => {
 app.get('/result/22', async (req, res) => {
   datas = []
   const result = await req.db.collection('restraunt')
-  .find({'address.coord': {'$type': 'double'}})
-  .forEach((data) => {
+  .find({'address.coord': {'$type': 'double'}}).forEach((data) => {
     datas.push(data)
   })
   res.json(datas)
@@ -276,8 +263,7 @@ app.get('/result/23', async (req, res) => {
   datas = []
   fields = {'name': 1, 'address.coord': 1, 'district': 1, 'cuisine': 1}
   const result = await req.db.collection('restraunt')
-  .find({'name': {'$regex': '^Mad'}})
-  .forEach((data) => {
+  .find({'name': {'$regex': '^Mad'}}).forEach((data) => {
     datas.push(data)
   })
   res.json(datas)
