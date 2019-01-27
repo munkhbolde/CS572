@@ -5,9 +5,11 @@ const app = express()
 
 //:1 Helper
 client.connect()
+const db = client.db('cs5')
+
 app.use((req, res, next) => {
   res.header('Content-Type', 'application/json')
-  req.db = client.db('cs5')
+  req.db = db
   next()
 })
 
