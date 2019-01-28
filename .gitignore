@@ -1,2 +1,11 @@
 **/Makefile
+**/node_modules
+**/angular.json
+**/package-lock.json
+**/package.json
+**/tsconfig.json
+**/tslint.json
+!**/src/app/
+**/src/
+**/e2e/
 pre-exam
