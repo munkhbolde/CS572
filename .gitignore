@@ -5,7 +5,7 @@
 **/package.json
 **/tsconfig.json
 **/tslint.json
+**/src/**
 !**/src/app/
-**/src/
 **/e2e/
 pre-exam
